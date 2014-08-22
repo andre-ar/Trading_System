@@ -2,6 +2,7 @@
     <wb-module deploy-name="Trading_System">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/br.edu.tradingsystem"/>
         <property name="context-root" value="Trading_System"/>
         <property name="java-output-path" value="/Trading_System/build/classes"/>
     </wb-module>
