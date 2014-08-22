@@ -6,11 +6,11 @@ public class Cliente {
 	private String endereco;
 	private String email;
 	private int telefone;
-	private double cpf;
+	private int cpf;
 	private int id_cliente;
 	// para clientes sem id sera considerado valor maximo
 	
-public Cliente(String nome, String endereco, String email, double cpf, int telefone ){
+public Cliente(String nome, String endereco, String email, int cpf, int telefone ){
 	this.nome= nome;
 	this.cpf = cpf;
 	this.email = email;
@@ -42,11 +42,11 @@ public void setEmail(String email) {
 	this.email = email;
 }
 
-public double getCpf() {
+public int getCpf() {
 	return cpf;
 }
 
-public void setCpf(double cpf) {
+public void setCpf(int cpf) {
 	this.cpf = cpf;
 }
 

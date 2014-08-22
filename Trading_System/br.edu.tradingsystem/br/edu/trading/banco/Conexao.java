@@ -2,7 +2,10 @@ package br.edu.trading.banco;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import beans.Cliente;
 
 public class Conexao {
 	Connection com;
@@ -34,6 +37,22 @@ public void fechar_conexao(){
 	System.out.println("conexao finalizada");
 }
 
-public void inserir_cliente(){}
+public void inserir_cliente(Cliente cliente) throws SQLException{
+	
+	String sql = "insert into tb_cliente" + "(nome, endereço, telefone, email, cpf)" + "values" + "(?,?,?,?,?)";
+	PreparedStatement statement = com.prepareStatement(sql);
+	statement.setString(1, cliente.getNome());
+	statement.setString(2, cliente.getEndereco());
+	statement.setInt(3, cliente.getTelefone());
+	statement.setString(4, cliente.getEmail());
+	statement.setInt(5, cliente.getCpf());
+	statement.execute();
+	System.out.println("inserido cliente: " + cliente.getNome());
+	}
+
+public void alterar_cliente(){}
+
+
+
 
 }
