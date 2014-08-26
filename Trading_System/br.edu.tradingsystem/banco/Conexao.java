@@ -37,34 +37,4 @@ public void fechar_conexao(){
 	System.out.println("conexao finalizada");
 }
 
-public void inserir_cliente(Cliente cliente) throws SQLException{
-	
-	String sql = "insert into tb_cliente" + "(nome, endereço, telefone, email, cpf)" + "values" + "(?,?,?,?,?)";
-	PreparedStatement statement = com.prepareStatement(sql);
-	statement.setString(1, cliente.getNome());
-	statement.setString(2, cliente.getEndereco());
-	statement.setInt(3, cliente.getTelefone());
-	statement.setString(4, cliente.getEmail());
-	statement.setInt(5, cliente.getCpf());
-	statement.execute();
-	System.out.println("inserido cliente: " + cliente.getNome());
-	}
-
-public void alterar_cliente(Cliente cliente) throws SQLException{
-
-	String sql = "update tb_cliente set nome=?,endereco=?, telefone=?, email=?, cpf=?   where id=?";
-PreparedStatement statement = com.prepareStatement(sql);
-statement.setString(1, cliente.getNome());
-statement.setString(2, cliente.getEndereco());
-statement.setInt(3, cliente.getTelefone());
-statement.setString(4, cliente.getEmail());
-statement.setInt(5, cliente.getCpf());
-statement.setInt(6, cliente.getCpf());
-}
-
-public void deletar_cliente(Cliente cliente){
-	String sql;
-}
-
-
 }
