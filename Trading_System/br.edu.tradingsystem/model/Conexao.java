@@ -6,19 +6,32 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class Conexao {
+	
 	Connection conn;
+	private static Conexao conexao;
 	private static ResourceBundle config;
+	
+	private Conexao() {
+		config = ResourceBundle.getBundle("config");
+	}
+	
+	public static Conexao getInstance(){
+		if (conexao == null){
+			conexao =  new Conexao();
+		}
+		return conexao;
+	}
 	
 	public Connection getConnection(){
 		
+		
 		try {
-			Class.forName("conn.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/trading", "root", "root");
+			Class.forName(config.getString("driver"));
+			conn = DriverManager.getConnection(config.getString("url"), config.getString("user"), config.getString("password"));
 			System.out.println("conexao aceita");
 			return conn;
 			
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("erro de conexao");
@@ -30,7 +43,6 @@ public class Conexao {
 		try {
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("conexao finalizada");

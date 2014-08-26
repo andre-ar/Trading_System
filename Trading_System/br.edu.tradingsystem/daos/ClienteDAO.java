@@ -15,7 +15,7 @@ public class ClienteDAO {
 	public void inserirCliente(Cliente cliente) throws SQLException{
 		
 		String sql = "insert into tb_cliente" + "(nome, endereco, telefone, email, cpf)" + "values" + "(?,?,?,?,?)";
-		connection = new Conexao().getConnection();
+		connection = Conexao.getInstance().getConnection();
 		
 		PreparedStatement statement = connection.prepareStatement(sql);
 	
@@ -23,7 +23,7 @@ public class ClienteDAO {
 		statement.setString(2, cliente.getEndereco());
 		statement.setInt(3, cliente.getTelefone());
 		statement.setString(4, cliente.getEmail());
-		statement.setInt(5, cliente.getCpf());
+		statement.setLong(5, cliente.getCpf());
 		statement.execute();
 		connection.close();
 		
@@ -36,8 +36,8 @@ public class ClienteDAO {
 					 "endereco =?," +
 					 "telefone = ?," +
 					 "email=?," +
-					 "cpf=?";
-		connection = new Conexao().getConnection();
+					 "cpf=? where cpf = 12345672";
+		connection = Conexao.getInstance().getConnection();
 		
 		PreparedStatement statement = connection.prepareStatement(sql);
 		
@@ -45,7 +45,7 @@ public class ClienteDAO {
 		statement.setString(2, cliente.getEndereco());
 		statement.setInt(3, cliente.getTelefone());
 		statement.setString(4, cliente.getEmail());
-		statement.setInt(5, cliente.getCpf());
+		statement.setLong(5, cliente.getCpf());
 		statement.execute();
 		connection.close();
 		
@@ -53,13 +53,13 @@ public class ClienteDAO {
 		
 	}
 	
-	public void removerCliente(int cpf) throws SQLException{
-		String sql = "delete from tb_pessoa where cpf=?";
+	public void removerCliente(long cpf) throws SQLException{
+		String sql = "delete from tb_cliente where cpf=?";
 		
-		connection = new Conexao().getConnection();
+		connection = Conexao.getInstance().getConnection();
 		
 		PreparedStatement statement = connection.prepareStatement(sql);
-		statement.setInt(1, cpf);
+		statement.setLong(1, cpf);
 		statement.execute();
 		connection.close();
 	}
