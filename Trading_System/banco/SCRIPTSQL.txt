@@ -1,0 +1,20 @@
+Trading system
+
+Linhas de comandos utilizadas no banco trading:
+Criar tabela produto:
+
+CREATE TABLE `trading`.`produto` (
+  `id_produto` INT NOT NULL AUTO_INCREMENT,
+  `preco` FLOAT NOT NULL,
+  `nome` VARCHAR(100) NOT NULL,
+  `tipo` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_produto`));
+
+Criar a tabela funcionário:
+
+create table tb_funcionario( id_funcionario integer auto_increment, nome varchar(145), endereço varchar(300), telefone double, email varchar(200), cpf double not null, primary key (id_funcionario))
+
+criar a tabela cliente:
+
+create table tb_cliente( id_cliente integer auto_increment, nome varchar(145), endereço varchar(300), telefone double, email varchar(200), cpf double not null, primary key (id_cliente))
+
