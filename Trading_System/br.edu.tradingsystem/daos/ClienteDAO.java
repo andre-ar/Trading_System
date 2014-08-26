@@ -18,16 +18,17 @@ public class ClienteDAO {
 		connection = new Conexao().getConnection();
 		
 		PreparedStatement statement = connection.prepareStatement(sql);
-		
+	
 		statement.setString(1, cliente.getNome());
 		statement.setString(2, cliente.getEndereco());
 		statement.setInt(3, cliente.getTelefone());
 		statement.setString(4, cliente.getEmail());
 		statement.setInt(5, cliente.getCpf());
 		statement.execute();
-		System.out.println("inserido cliente: " + cliente.getNome());
+		connection.close();
 		
-		}
+		System.out.println("inserido cliente: " + cliente.getNome());		}
+	
 	
 	public void  atualizarCliente(Cliente cliente) throws SQLException{
 		String sql = "update tb_cliente" +
@@ -46,9 +47,23 @@ public class ClienteDAO {
 		statement.setString(4, cliente.getEmail());
 		statement.setInt(5, cliente.getCpf());
 		statement.execute();
+		connection.close();
+		
 		System.out.println("atualizado cliente: " + cliente.getNome());
 		
 	}
+	
+	public void removerCliente(int cpf) throws SQLException{
+		String sql = "delete from tb_pessoa where cpf=?";
+		
+		connection = new Conexao().getConnection();
+		
+		PreparedStatement statement = connection.prepareStatement(sql);
+		statement.setInt(1, cpf);
+		statement.execute();
+		connection.close();
+	}
+	
 	
 	
 	
