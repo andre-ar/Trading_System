@@ -7,30 +7,52 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class ControllServlet extends HttpServlet{
+import beans.Controll;
+
+public class ControllServlet extends HttpServlet {
+private static final long serialVersionUID = 1L;
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest	request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-	service(request, response);
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		service(request, response);
 	}
 
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		
-		super.service(request, response);
+	protected void service(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+
+		String param = request.getParameter("classe");
+
+		String nomeClasse = "controller." + param;
+
+		try {
+
+			Class classe = Class.forName(nomeClasse);
+
+			Controll controll = (Controll) classe.newInstance();
+
+			String pagina = controll.execute(request, response);
+
+			request.getRequestDispatcher(pagina).forward(request, response);
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+
+			e.printStackTrace();
+		}
+
 	}
 
-	
-	
-	
-	
 }

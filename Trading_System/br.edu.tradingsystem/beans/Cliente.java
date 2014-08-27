@@ -8,65 +8,64 @@ public class Cliente {
 	private int telefone;
 	private long cpf;
 	private int id_cliente;
+
 	// para clientes sem id sera considerado valor maximo
-	
-public Cliente(String nome, String endereco, String email, long cpf, int telefone ){
-	this.nome= nome;
-	this.cpf = cpf;
-	this.email = email;
-	this.endereco = endereco;
-	this.telefone = telefone;
-	this.id_cliente = Integer.MAX_VALUE; }
 
-public String getNome() {
-	return nome;
-}
+	public Cliente() {
+		this.nome = "";
+		this.cpf = 0;
+		this.email = "";
+		this.endereco = "";
+		this.telefone = 0;
+		this.id_cliente = Integer.MAX_VALUE;
+	}
 
-public void setNome(String nome) {
-	this.nome = nome;
-}
+	public String getNome() {
+		return nome;
+	}
 
-public String getEndereco() {
-	return endereco;
-}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-public void setEndereco(String endereco) {
-	this.endereco = endereco;
-}
+	public String getEndereco() {
+		return endereco;
+	}
 
-public String getEmail() {
-	return email;
-}
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
 
-public void setEmail(String email) {
-	this.email = email;
-}
+	public String getEmail() {
+		return email;
+	}
 
-public long getCpf() {
-	return cpf;
-}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-public void setCpf(long cpf) {
-	this.cpf = cpf;
-}
+	public long getCpf() {
+		return cpf;
+	}
 
-public int getId_cliente() {
-	return id_cliente;
-}
+	public void setCpf(long cpf) {
+		this.cpf = cpf;
+	}
 
-public void setId_cliente(int id_cliente) {
-	this.id_cliente = id_cliente;
-}
+	public int getId_cliente() {
+		return id_cliente;
+	}
 
-public int getTelefone() {
-	return telefone;
-}
+	public void setId_cliente(int id_cliente) {
+		this.id_cliente = id_cliente;
+	}
 
-public void setTelefone(int telefone) {
-	this.telefone = telefone;
-}
+	public int getTelefone() {
+		return telefone;
+	}
 
+	public void setTelefone(int telefone) {
+		this.telefone = telefone;
+	}
 
-
-	
 }

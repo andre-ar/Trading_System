@@ -36,7 +36,7 @@ public class ClienteDAO {
 					 "endereco =?," +
 					 "telefone = ?," +
 					 "email=?," +
-					 "cpf=? where cpf = 12345672";
+					 " where cpf =? ";
 		connection = Conexao.getInstance().getConnection();
 		
 		PreparedStatement statement = connection.prepareStatement(sql);
