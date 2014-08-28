@@ -7,7 +7,7 @@ public class Cliente {
 	private String email;
 	private int telefone;
 	private long cpf;
-	private int id_cliente;
+
 
 	// para clientes sem id sera considerado valor maximo
 
@@ -17,7 +17,7 @@ public class Cliente {
 		this.email = "";
 		this.endereco = "";
 		this.telefone = 0;
-		this.id_cliente = Integer.MAX_VALUE;
+		
 	}
 
 	public String getNome() {
@@ -52,13 +52,7 @@ public class Cliente {
 		this.cpf = cpf;
 	}
 
-	public int getId_cliente() {
-		return id_cliente;
-	}
 
-	public void setId_cliente(int id_cliente) {
-		this.id_cliente = id_cliente;
-	}
 
 	public int getTelefone() {
 		return telefone;
